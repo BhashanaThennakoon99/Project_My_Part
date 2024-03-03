@@ -1,55 +1,14 @@
 {
   "Roles": [
     {
-      "id": "d364",
-      "rolecode": "76554",
-      "rolename": "code n",
-      "privileges": [
-        "viewAccess"
-      ]
-    },
-    {
-      "id": "144a",
-      "rolecode": "777gt",
-      "rolename": "bhght",
-      "privileges": [
-        "createAccess"
-      ]
-    },
-    {
-      "id": "136b",
-      "rolecode": "dsad",
-      "rolename": " gh f g f",
+      "id": "1494",
+      "rolecode": "6768",
+      "rolename": "njkjk",
       "privileges": [
         "createAccess",
-        "updateAccess"
-      ]
-    },
-    {
-      "id": "6746",
-      "rolecode": "ROLE_00",
-      "rolename": "REAAD",
-      "privileges": [
-        "viewAccess"
-      ]
-    },
-    {
-      "id": "a86f",
-      "rolecode": "etert",
-      "rolename": "rttret",
-      "privileges": [
+        "viewAccess",
         "updateAccess",
-        "viewAccess"
-      ]
-    },
-    {
-      "id": "dabd",
-      "rolecode": "QQQQ",
-      "rolename": "TRWEWE",
-      "privileges": [
-        "createAccess",
-        "updateAccess",
-        "viewAccess"
+        "deleteAccess"
       ]
     }
   ]
