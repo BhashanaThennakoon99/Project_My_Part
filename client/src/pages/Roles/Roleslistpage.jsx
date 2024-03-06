@@ -16,12 +16,11 @@ function Roleslistpage() {
     const [data, setData] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]);
     const [selectedRoleId, setSelectedRoleId] = useState(null);
-    const [editingRow, setEditingRow] = useState(null); // Track which row is being edited
-    const [editedRoleName, setEditedRoleName] = useState(''); // Track edited role name
+    const [editingRow, setEditingRow] = useState(null); 
+    const [editedRoleName, setEditedRoleName] = useState(''); 
     const navigate = useNavigate();
 
     useEffect(() => {
-        //dispatch(SetUserAction(""));
         fetchData();
     }, []);
 
@@ -50,7 +49,6 @@ function Roleslistpage() {
             axios.delete(`${BASE_URL}${ROLE_URL}/${data[rowId].id}`)
                 .then(res => {
                     console.log("Deleted successfully.");
-                    // fetchData();
                 })
                 .catch(err => console.log(err));
         });
@@ -59,24 +57,23 @@ function Roleslistpage() {
 
     const handleEdit = (rowId) => {
         setEditingRow(rowId);
-        setEditedRoleName(data[rowId].roleName); // Set the edited role name
+        setEditedRoleName(data[rowId].rolename); // Set the edited role name
     };
 
     const handleSave = () => {
         // Update the data with edited role name
         const newData = data.map((d, i) => {
             if (i === editingRow) {
-                return { ...d, roleName: editedRoleName };
+                return { ...d, rolename: editedRoleName };
             }
             return d;
         });
         setData(newData);
         // Here you would make an API call to save the edited data
         // For demonstration purposes, let's assume we're sending a PUT request
-        axios.put(`${BASE_URL}${ROLE_URL}/${data[editingRow].id}`, { roleName: editedRoleName })
+        axios.put(`${BASE_URL}${ROLE_URL}/${data[editingRow].id}`, { rolename: editedRoleName })
             .then(res => {
                 console.log("Data saved successfully.");
-                // fetchData();
             })
             .catch(err => console.log(err));
         setEditingRow(null);

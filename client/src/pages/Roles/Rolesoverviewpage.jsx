@@ -20,7 +20,6 @@ function Rolesoverviewpage() {
 
   const handleRoleClick = (roleId) => {
     setSelectedRoleId(selectedRoleId === roleId ? null : roleId);
-    
     const role = rolesData.find(role => role.id === roleId);
     setSelectedRole(role);
   };
@@ -30,7 +29,26 @@ function Rolesoverviewpage() {
     setSelectedRoleId(null); 
   };
 
-  const filteredRoles = searchQuery ? rolesData.filter(role => role.rolename.toLowerCase().includes(searchQuery.toLowerCase())) : rolesData;
+  const renderPrivileges = (role) => {
+    if (!role || !role.privileges) return null;
+    const grantedPrivileges = Object.keys(role.privileges).filter(privilege => role.privileges[privilege]);
+    return (
+      <div>
+        <h4>Privileges of {role.rolename}</h4>
+        <ul>
+          {grantedPrivileges.map((privilege, index) => (
+            <li key={index} style={{ fontSize: '18px' }}>
+              {privilege}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
+  const filteredRoles = searchQuery 
+    ? rolesData.filter(role => role.rolename.toLowerCase().includes(searchQuery.toLowerCase())) 
+    : rolesData;
 
   return (
     <div className="App">
@@ -56,17 +74,8 @@ function Rolesoverviewpage() {
             {filteredRoles.map((role) => (
               <tr key={role.id}>
                 <td onClick={() => handleRoleClick(role.id)}>
-                  {selectedRoleId === role.id && (
-                    <div>
-                      <h4>Privileges of {role.rolename}</h4>
-                      <ul>
-                        {role.privileges.map((privilege, index) => (
-                          <li key={index} style={{ fontSize: '18px' }}>{privilege}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
                   <div className="subti" style={{ fontSize: '20px' }}>{role.rolename}</div>
+                  {selectedRoleId === role.id && renderPrivileges(role)}
                 </td>
               </tr>
             ))}
