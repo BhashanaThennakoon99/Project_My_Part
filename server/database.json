@@ -1,13 +1,13 @@
 {
   "Roles": [
     {
-      "id": "1494",
-      "rolecode": "6768",
-      "rolename": "njkjk",
+      "id": "0685",
+      "rolecode": "2345cd",
+      "rolename": "admin",
       "privileges": [
+        "updateAccess",
         "createAccess",
         "viewAccess",
-        "updateAccess",
         "deleteAccess"
       ]
     }
