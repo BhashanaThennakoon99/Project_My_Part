@@ -1,3 +1,21 @@
 {
-  "Roles": []
+  "Roles": [
+    {
+      "id": "02d1",
+      "rolecode": "787878",
+      "rolename": "jjkjkkl",
+      "privileges": [
+        "updateAccess",
+        "viewAccess"
+      ]
+    },
+    {
+      "id": "9dcd",
+      "rolecode": "knnn",
+      "rolename": "m m ",
+      "privileges": [
+        "updateAccess"
+      ]
+    }
+  ]
 }
