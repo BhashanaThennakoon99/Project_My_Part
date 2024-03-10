@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { SetUserAction } from '../../actions/UserAction';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSave, faTrash, faPencilAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const ROLE_URL = '/Roles';
 
@@ -16,8 +17,8 @@ function Roleslistpage() {
     const [data, setData] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]);
     const [selectedRoleId, setSelectedRoleId] = useState(null);
-    const [editingRow, setEditingRow] = useState(null); 
-    const [editedRoleName, setEditedRoleName] = useState(''); 
+    const [editingRow, setEditingRow] = useState(null);
+    const [editedRoleName, setEditedRoleName] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -27,8 +28,7 @@ function Roleslistpage() {
     const fetchData = () => {
         axios.get(`${BASE_URL}${ROLE_URL}`)
             .then((response) => {
-                console.log(response)
-                setData(response.data)
+                setData(response.data);
             })
             .catch(err => console.log(err));
     };
@@ -57,11 +57,17 @@ function Roleslistpage() {
 
     const handleEdit = (rowId) => {
         setEditingRow(rowId);
-        setEditedRoleName(data[rowId].rolename); // Set the edited role name
+        setEditedRoleName(data[rowId].rolename);
+    };
+
+    const handleMoreOptions = () => {
+        if (selectedRows.length === 1) {
+            const selectedRole = data[selectedRows[0]];
+            navigate(`/rolesoverview/${selectedRole.id}`, { state: { roleData: selectedRole } });
+        }
     };
 
     const handleSave = () => {
-        // Update the data with edited role name
         const newData = data.map((d, i) => {
             if (i === editingRow) {
                 return { ...d, rolename: editedRoleName };
@@ -69,8 +75,6 @@ function Roleslistpage() {
             return d;
         });
         setData(newData);
-        // Here you would make an API call to save the edited data
-        // For demonstration purposes, let's assume we're sending a PUT request
         axios.put(`${BASE_URL}${ROLE_URL}/${data[editingRow].id}`, { rolename: editedRoleName })
             .then(res => {
                 console.log("Data saved successfully.");
@@ -89,6 +93,7 @@ function Roleslistpage() {
                         <FontAwesomeIcon icon={faSave} style={{ fontSize: '1.5rem', margin: '10px', cursor: 'pointer' }} onClick={handleSave} />
                         <FontAwesomeIcon icon={faPencilAlt} style={{ fontSize: '1.5rem', margin: '10px', cursor: 'pointer' }} onClick={() => handleEdit(selectedRows[0])} />
                         <FontAwesomeIcon icon={faTrash} style={{ fontSize: '1.5rem', margin: '10px', cursor: 'pointer' }} onClick={deleteSelectedRows} />
+                        <FontAwesomeIcon icon={faEllipsisV} style={{ fontSize: '1.5rem', margin: '10px', cursor: 'pointer' }} onClick={handleMoreOptions} />
                     </div>
                 </div>
                 <table className="table" width={"900px"} border={1} style={{ borderCollapse: 'collapse' }}>
