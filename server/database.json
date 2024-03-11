@@ -26,6 +26,15 @@
     {
       "rolename": "Test 2",
       "id": "3e42"
+    },
+    {
+      "id": "d9a0",
+      "rolecode": "71625",
+      "rolename": "nhgft",
+      "privileges": [
+        "createAccess",
+        "viewAccess"
+      ]
     }
   ]
 }
