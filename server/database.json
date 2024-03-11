@@ -1,12 +1,31 @@
 {
   "Roles": [
     {
-      "rolename": "hghgg",
-      "id": "968b"
+      "id": "3853",
+      "rolecode": "12121212",
+      "rolename": "Manage officer ",
+      "privileges": [
+        "createAccess",
+        "updateAccess",
+        "viewAccess",
+        "deleteAccess"
+      ]
     },
     {
-      "rolename": "mmmeeeeeeaaddddd",
-      "id": "a99f"
+      "id": "815e",
+      "rolecode": "12123434",
+      "rolename": "View officer",
+      "privileges": [
+        "viewAccess"
+      ]
+    },
+    {
+      "rolename": "Test 1",
+      "id": "615a"
+    },
+    {
+      "rolename": "Test 2",
+      "id": "3e42"
     }
   ]
 }

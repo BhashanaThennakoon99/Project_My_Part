@@ -66,6 +66,7 @@ function Roleslistpage() {
             navigate(`/rolesoverview/${selectedRole.id}`, { state: { roleData: selectedRole } });
         }
     };
+    
 
     const handleSave = () => {
         const newData = data.map((d, i) => {
