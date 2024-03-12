@@ -35,6 +35,31 @@
         "createAccess",
         "viewAccess"
       ]
+    },
+    {
+      "id": "1c3a",
+      "rolecode": "8989",
+      "rolename": "ghgh",
+      "privileges": [
+        "createAccess"
+      ]
+    },
+    {
+      "id": "ef47",
+      "rolecode": "77128972",
+      "rolename": "Test 4",
+      "privileges": [
+        "updateAccess",
+        "viewAccess"
+      ]
+    },
+    {
+      "id": "c99e",
+      "rolecode": "71281721",
+      "rolename": "gdwgfhwefwehwefghwfe",
+      "privileges": [
+        "updateAccess"
+      ]
     }
   ]
 }
