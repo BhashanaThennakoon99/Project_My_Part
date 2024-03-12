@@ -28,23 +28,6 @@
       "id": "3e42"
     },
     {
-      "id": "d9a0",
-      "rolecode": "71625",
-      "rolename": "nhgft",
-      "privileges": [
-        "createAccess",
-        "viewAccess"
-      ]
-    },
-    {
-      "id": "1c3a",
-      "rolecode": "8989",
-      "rolename": "ghgh",
-      "privileges": [
-        "createAccess"
-      ]
-    },
-    {
       "id": "ef47",
       "rolecode": "77128972",
       "rolename": "Test 4",
@@ -54,12 +37,8 @@
       ]
     },
     {
-      "id": "c99e",
-      "rolecode": "71281721",
-      "rolename": "gdwgfhwefwehwefghwfe",
-      "privileges": [
-        "updateAccess"
-      ]
+      "rolename": "test 6",
+      "id": "3c23"
     }
   ]
 }
