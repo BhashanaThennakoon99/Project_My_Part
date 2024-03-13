@@ -28,17 +28,22 @@
       "id": "3e42"
     },
     {
-      "id": "ef47",
-      "rolecode": "77128972",
-      "rolename": "Test 4",
+      "id": "a884",
+      "rolecode": "4532cd",
+      "rolename": "test 10",
       "privileges": [
         "updateAccess",
         "viewAccess"
       ]
     },
     {
-      "rolename": "test 6",
-      "id": "3c23"
+      "id": "599f",
+      "rolecode": "66666777",
+      "rolename": "fgrtrtyyyyyyyyyyyyyy",
+      "privileges": [
+        "createAccess",
+        "updateAccess"
+      ]
     }
   ]
 }
