@@ -28,22 +28,8 @@
       "id": "3e42"
     },
     {
-      "id": "a884",
-      "rolecode": "4532cd",
-      "rolename": "test 10",
-      "privileges": [
-        "updateAccess",
-        "viewAccess"
-      ]
-    },
-    {
-      "id": "599f",
-      "rolecode": "66666777",
-      "rolename": "fgrtrtyyyyyyyyyyyyyy",
-      "privileges": [
-        "createAccess",
-        "updateAccess"
-      ]
+      "rolename": "view test",
+      "id": "483e"
     }
   ]
 }
