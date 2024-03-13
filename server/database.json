@@ -24,12 +24,23 @@
       "id": "615a"
     },
     {
-      "rolename": "Test 2",
-      "id": "3e42"
+      "id": "0b16",
+      "rolecode": "34cd",
+      "rolename": "test 20",
+      "privileges": [
+        "updateAccess",
+        "viewAccess"
+      ]
     },
     {
-      "rolename": "view test",
-      "id": "483e"
+      "id": "9042",
+      "rolecode": "6788cd",
+      "rolename": "test 90",
+      "privileges": [
+        "updateAccess",
+        "viewAccess",
+        "createAccess"
+      ]
     }
   ]
 }
