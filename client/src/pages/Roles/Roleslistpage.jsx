@@ -2,36 +2,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { SetUserAction } from '../../actions/UserAction';
+import { fetchRoles, deleteRole, updateRole } from '../../store/actions/RoleActions'; // Import updateRole action
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSave, faTrash, faPencilAlt, faEllipsisV } from "@fortawesome/free-solid-svg-icons";
-
-const BASE_URL = process.env.REACT_APP_BASE_URL;
-const ROLE_URL = '/Roles';
 
 function Roleslistpage() {
     const location = useLocation();
     const roleName = location.state ? location.state.roleName : '';
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.SetUserReducer.user);
-    const [data, setData] = useState([]);
+    const user = useSelector((state) => state.SetUserReducer.user); // Ensure SetUserReducer is properly defined in your rootReducer
+    const roles = useSelector(state => state.roles);
     const [selectedRows, setSelectedRows] = useState([]);
-    const [selectedRoleId, setSelectedRoleId] = useState(null);
     const [editingRow, setEditingRow] = useState(null);
     const [editedRoleName, setEditedRoleName] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = () => {
-        axios.get(`${BASE_URL}${ROLE_URL}`)
-            .then((response) => {
-                setData(response.data);
-            })
-            .catch(err => console.log(err));
-    };
+        dispatch(fetchRoles());
+    }, [dispatch]);
 
     const toggleRowSelection = (rowId) => {
         const isSelected = selectedRows.includes(rowId);
@@ -43,44 +31,27 @@ function Roleslistpage() {
     };
 
     const deleteSelectedRows = () => {
-        const newData = data.filter((d, i) => !selectedRows.includes(i));
-        setData(newData);
         selectedRows.forEach(rowId => {
-            axios.delete(`${BASE_URL}${ROLE_URL}/${data[rowId].id}`)
-                .then(res => {
-                    console.log("Deleted successfully.");
-                })
-                .catch(err => console.log(err));
+            dispatch(deleteRole(roles[rowId].id));
         });
         setSelectedRows([]);
     };
 
     const handleEdit = (rowId) => {
         setEditingRow(rowId);
-        setEditedRoleName(data[rowId].rolename);
+        setEditedRoleName(roles[rowId].rolename);
     };
 
     const handleMoreOptions = () => {
         if (selectedRows.length === 1) {
-            const selectedRole = data[selectedRows[0]];
+            const selectedRole = roles[selectedRows[0]];
             navigate(`/rolesoverview/${selectedRole.id}`, { state: { roleData: selectedRole } });
         }
     };
-    
 
     const handleSave = () => {
-        const newData = data.map((d, i) => {
-            if (i === editingRow) {
-                return { ...d, rolename: editedRoleName };
-            }
-            return d;
-        });
-        setData(newData);
-        axios.put(`${BASE_URL}${ROLE_URL}/${data[editingRow].id}`, { rolename: editedRoleName })
-            .then(res => {
-                console.log("Data saved successfully.");
-            })
-            .catch(err => console.log(err));
+        const roleId = roles[editingRow].id;
+        dispatch(updateRole(roleId, { rolename: editedRoleName }));
         setEditingRow(null);
     };
 
@@ -105,30 +76,30 @@ function Roleslistpage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {data && data.map((item, i) => (
-                            <tr key={i}>
+                        {roles && roles.map((role, index) => (
+                            <tr key={role.id}>
                                 <td>
                                     <input
                                         className="form-check-input"
                                         type="checkbox"
                                         name="view"
                                         style={{ width: '20px', height: '20px', border: '2px solid black', marginRight: '20px' }}
-                                        onChange={() => toggleRowSelection(i)}
-                                        checked={selectedRows.includes(i)}
+                                        onChange={() => toggleRowSelection(index)}
+                                        checked={selectedRows.includes(index)}
                                     />
                                     <Link to={'/rolesoverview'} className="view-btn">
                                         <button className="view"><FontAwesomeIcon icon={faEllipsisV} style={{ fontSize: '1.5rem', margin: '3px', cursor: 'pointer' }} /></button>
                                     </Link>
                                 </td>
                                 <td style={{ fontSize: '21px' }}>
-                                    {editingRow === i ? (
+                                    {editingRow === index ? (
                                         <input
                                             type="text"
                                             value={editedRoleName}
                                             onChange={(e) => setEditedRoleName(e.target.value)}
                                         />
                                     ) : (
-                                        item.rolename
+                                        role.rolename
                                     )}
                                 </td>
                             </tr>

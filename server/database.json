@@ -1,46 +1,50 @@
 {
   "Roles": [
     {
-      "id": "3853",
-      "rolecode": "12121212",
-      "rolename": "Manage officer ",
-      "privileges": [
-        "createAccess",
-        "updateAccess",
-        "viewAccess",
-        "deleteAccess"
-      ]
+      "rolename": "ty",
+      "id": "3853"
     },
     {
-      "id": "815e",
-      "rolecode": "12123434",
-      "rolename": "View officer",
-      "privileges": [
-        "viewAccess"
-      ]
+      "rolename": "View officer445",
+      "id": "815e"
     },
     {
-      "rolename": "Test 1",
-      "id": "615a"
-    },
-    {
-      "id": "0b16",
-      "rolecode": "34cd",
-      "rolename": "test 20",
-      "privileges": [
-        "updateAccess",
-        "viewAccess"
-      ]
-    },
-    {
-      "id": "9042",
-      "rolecode": "6788cd",
-      "rolename": "test 90",
+      "rolename": "test 907",
       "privileges": [
         "updateAccess",
         "viewAccess",
         "createAccess"
+      ],
+      "id": "9042"
+    },
+    {
+      "id": "a959",
+      "rolecode": "6768",
+      "rolename": "trewer",
+      "privileges": [
+        "updateAccess",
+        "viewAccess"
       ]
+    },
+    {
+      "rolename": "tgyrew467",
+      "privileges": [
+        "updateAccess",
+        "viewAccess"
+      ],
+      "id": "1877"
+    },
+    {
+      "id": "e7a4",
+      "rolecode": "456",
+      "rolename": "defrtg",
+      "privileges": [
+        "createAccess"
+      ]
+    },
+    {
+      "rolename": "mkjuihjmkkkk",
+      "id": "6223"
     }
   ]
 }

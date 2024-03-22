@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSave, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
+import { editRole } from '../../store/actions/RoleActions';
 
 function RolesOverviewPage() {
     const location = useLocation();
@@ -15,6 +17,15 @@ function RolesOverviewPage() {
 
     const [editingPrivileges, setEditingPrivileges] = useState([...values.privileges]);
     const [isEditing, setIsEditing] = useState(false);
+    const dispatch = useDispatch();
+
+
+    const [editedRoleData, setEditedRoleData] = useState(roleData);
+
+
+    useEffect(() => {
+        setEditedRoleData(roleData);
+    }, [roleData]);
 
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
@@ -33,17 +44,8 @@ function RolesOverviewPage() {
         // Handle saving the edited privileges (note to me : send API request if needed)
         setValues({ ...values, privileges: editingPrivileges });
         setIsEditing(false);
+        dispatch(editRole(editedRoleData.id, editedRoleData));
     };
-
-    useEffect(() => {
-        setValues({
-            rolecode: roleData?.rolecode || '',
-            rolename: roleData?.rolename || '',
-            privileges: roleData?.privileges || [],
-        });
-        setEditingPrivileges([...roleData?.privileges || []]);
-        setIsEditing(false);
-    }, [roleData]);
 
     return (
         <div className="App">
